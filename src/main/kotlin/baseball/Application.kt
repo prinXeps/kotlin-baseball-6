@@ -13,6 +13,21 @@ fun generateRandomNumber(): List<Int> {
     return numbers
 }
 
+
+fun calculateStrikesAndBalls(secret: List<Int>, guess: List<Int>): Pair<Int, Int> {
+    var strikes = 0
+    var balls = 0
+    for (i in guess.indices) {
+        if (guess[i] == secret[i]) {
+            strikes++
+        } else if (guess[i] in secret) {
+            balls++
+        }
+    }
+    return Pair(strikes, balls)
+}
+
+
 fun main() {
     println("숫자 야구 게임을 시작합니다!")
     startGame()
