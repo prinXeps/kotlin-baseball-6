@@ -1,5 +1,6 @@
 package baseball
 
+import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun generateRandomNumber(): List<Int> {
@@ -25,6 +26,22 @@ fun calculateStrikesAndBalls(secret: List<Int>, guess: List<Int>): Pair<Int, Int
         }
     }
     return Pair(strikes, balls)
+}
+
+
+fun getUserInput(prompt: String): String {
+    println(prompt)
+    return Console.readLine().trim()
+}
+
+
+fun isValidInput(input: String): Boolean {
+    // Check if input length is exactly 3
+    if (input.length != 3) return false
+    // Check if all characters are digits between '1' and '9'
+    if (!input.all { it in '1'..'9' }) return false
+    // Check if all characters are unique
+    return input.toSet().size == 3
 }
 
 
